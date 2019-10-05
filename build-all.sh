@@ -15,7 +15,7 @@ for dir in ${script_dir}/*; do
     echo -e "\033[1;32mBuilding image ${image}\033[0m"
 
     if [[ -e ${dir}/build-docker-image.sh ]]; then
-        (cd ${dir} && ./build-docker-image.sh tag=${tag})
+        (cd ${dir} && tag=${tag} ./build-docker-image.sh)
         continue
     fi
 
