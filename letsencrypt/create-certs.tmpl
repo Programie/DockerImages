@@ -1,0 +1,9 @@
+{{ range $hostList, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
+    {{ $useVhosts := parseBool (or (first (groupByKeys $containers "Env.LETSENCRYPT_USE_VHOSTS")) "false") }}
+    {{ if $useVhosts }}
+        {{ replace $hostList "|" "," -1 }}
+    {{ end }}
+{{ end}}
+{{ range $host, $containers := groupByMulti $ "Env.LETSENCRYPT_HOST" "," }}
+    {{ $host }}
+{{ end }}

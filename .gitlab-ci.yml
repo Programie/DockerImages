@@ -1,0 +1,24 @@
+# This is a GitLab CI configuration to build the project as a docker image
+# The file is generic enough to be dropped in a project containing a working Dockerfile
+# Author: Florent CHAUVEAU <florent.chauveau@gmail.com>
+# Mentioned here: https://blog.callr.tech/building-docker-images-with-gitlab-ci-best-practices/
+
+# do not use "latest" here, if you want this to work in the future
+image: docker:18.09.7
+
+stages:
+  - build
+
+# Use this if your GitLab runner does not use socket binding
+services:
+  - docker:18.09.7-dind
+
+before_script:
+  # docker login asks for the password to be passed through stdin for security
+  # we use $CI_JOB_TOKEN here which is a special token provided by GitLab
+  - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+
+build:
+  stage: build
+  script:
+    - ./build-all.sh
