@@ -19,7 +19,82 @@ before_script:
   - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
   - apk update && apk add bash
 
-build:
+build-bind:
   stage: build
   script:
-    - ./build-all.sh
+    - ./build-image.sh bind
+
+build-carddav2fb:
+  stage: build
+  script:
+    - ./build-image.sh carddav2fb
+
+build-dovecot:
+  stage: build
+  script:
+    - ./build-image.sh dovecot
+
+build-g10k:
+  stage: build
+  script:
+    - ./build-image.sh g10k
+
+build-generic-web:
+  stage: build
+  script:
+    - ./build-image.sh generic-web
+
+build-letsencrypt:
+  stage: build
+  script:
+    - ./build-image.sh letsencrypt
+
+build-matterbridge:
+  stage: build
+  script:
+    - ./build-image.sh matterbridge
+
+build-minecraft-bukkit:
+  stage: build
+  script:
+    - ./build-image.sh minecraft-bukkit
+
+build-minecraft-forge:
+  stage: build
+  script:
+    - ./build-image.sh minecraft-forge
+
+build-nagflux:
+  stage: build
+  script:
+    - ./build-image.sh nagflux
+
+build-nginx:
+  stage: build
+  script:
+    - ./build-image.sh nginx
+
+build-oscam:
+  stage: build
+  script:
+    - ./build-image.sh oscam
+
+build-overviewer:
+  stage: build
+  script:
+    - ./build-image.sh overviewer
+
+build-samba:
+  stage: build
+  script:
+    - ./build-image.sh samba
+
+build-tvheadend:
+  stage: build
+  script:
+    - ./build-image.sh tvheadend
+
+build-unifi:
+  stage: build
+  script:
+    - ./build-image.sh unifi
