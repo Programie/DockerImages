@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 RUN apt-get update && \
     apt-get install -y samba && \
@@ -10,4 +10,4 @@ EXPOSE 139 445
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["smbd", "-F", "-S"]
+CMD ["smbd", "-F", "-S", "--no-process-group"]
