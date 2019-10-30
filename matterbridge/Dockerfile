@@ -1,6 +1,6 @@
 FROM debian:stretch
 
-ENV MATTERBRIDGE_VERSION=1.15.0
+ENV MATTERBRIDGE_VERSION=1.16.1
 
 RUN apt-get update && \
     apt-get install -y ca-certificates curl && \
