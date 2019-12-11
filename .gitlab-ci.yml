@@ -54,10 +54,20 @@ build-matterbridge:
   script:
     - ./build-image.sh matterbridge
 
-build-minecraft-bukkit:
+build-minecraft-bukkit-1.12.2:
   stage: build
   script:
-    - ./build-image.sh minecraft-bukkit
+    - ./build-image.sh minecraft-bukkit 1.12.2 --build-arg MINECRAFT_VERSION=1.12.2
+
+build-minecraft-bukkit-1.14.4:
+  stage: build
+  script:
+    - ./build-image.sh minecraft-bukkit 1.14.4 --build-arg MINECRAFT_VERSION=1.14.4
+
+build-minecraft-bukkit-1.15:
+  stage: build
+  script:
+    - ./build-image.sh minecraft-bukkit 1.15 --build-arg MINECRAFT_VERSION=1.15
 
 build-minecraft-forge:
   stage: build
