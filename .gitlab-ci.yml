@@ -34,6 +34,11 @@ build-dovecot:
   script:
     - ./build-image.sh dovecot
 
+build-elastic-aggregate:
+  stage: build
+  script:
+    - ./build-image.sh elastic-aggregate
+
 build-g10k:
   stage: build
   script:
