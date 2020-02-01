@@ -13,7 +13,7 @@ create_cert()
     primary_domain=$(echo ${domains} | cut -d "," -f 1)
 
     if [[ ! -e ${certs_dir}/${primary_domain}/cert.pem ]]; then
-        certbot certonly --agree-tos --email ${email_address} -n --webroot -w ${webroot} -d ${domains}
+        certbot certonly --agree-tos --email ${email_address} --rsa-key-size 4096 -n --webroot -w ${webroot} -d ${domains}
         certs_requested=1
     fi
 }
