@@ -39,6 +39,11 @@ build-elastic-aggregate:
   script:
     - ./build-image.sh elastic-aggregate
 
+build-fritzbox2elastic:
+  stage: build
+  script:
+    - ./build-image.sh fritzbox2elastic
+
 build-g10k:
   stage: build
   script:
