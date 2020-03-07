@@ -1,6 +1,6 @@
 FROM linuxserver/tvheadend
 
-ENV PICONS_TAR_URL=https://github.com/picons/picons/releases/download/93/snp-full.220x132-190x102.light.on.transparent_2020-02-04--16-47-42.symlink.tar.xz
+ENV PICONS_TAR_URL=https://github.com/picons/picons/releases/download/2/snp-full.220x132-190x102.light.on.transparent_2020-03-06--10-21-07.symlink.tar.xz
 
 RUN apk add python3 && \
     pip3 install --upgrade pip && \
