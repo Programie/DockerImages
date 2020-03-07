@@ -2,11 +2,14 @@
 
 import hashlib
 import os
+import pytz
 import re
 
 from datetime import datetime
 from elasticsearch import Elasticsearch
 from fritzconnection import FritzConnection
+
+timezone = pytz.timezone(os.getenv("TZ", "UTC"))
 
 es_client = Elasticsearch(hosts=os.getenv("ES_HOST", "elasticsearch"))
 fritzbox_client = FritzConnection(address=os.getenv("FRITZ_HOST"))
@@ -22,6 +25,7 @@ for line in fritzbox_client.call_action("DeviceInfo1", "GetDeviceLog")["NewDevic
     message = match.group(2)
 
     date = datetime.strptime(date_time, "%d.%m.%y %H:%M:%S")
+    date = timezone.localize(date)
 
     doc_id = hashlib.sha1(line.encode("utf-8")).hexdigest()
 
