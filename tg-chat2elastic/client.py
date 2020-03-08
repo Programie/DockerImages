@@ -3,6 +3,8 @@
 import asyncio
 import logging
 import os
+from datetime import datetime
+
 import sys
 
 from elasticsearch import Elasticsearch
@@ -55,6 +57,12 @@ async def main():
     await tg_client.catch_up()
 
     if "import-history" in sys.argv:
+        start_date_index = sys.argv.index("import-history") + 1
+        if len(sys.argv) > start_date_index:
+            offset_date = datetime.strptime(sys.argv[start_date_index], "%Y-%m-%d")
+        else:
+            offset_date = None
+
         for chat in await tg_client.get_dialogs():
             if not isinstance(chat.entity, User):
                 continue
@@ -65,9 +73,12 @@ async def main():
             if not chat.entity.contact:
                 continue
 
-            logging.log(LOG_LEVEL_INFO, "Importing full history for chat '{}'".format(chat.title))
+            if offset_date:
+                logging.log(LOG_LEVEL_INFO, "Importing history for chat '{}' starting at {}".format(chat.title, offset_date.strftime("%c")))
+            else:
+                logging.log(LOG_LEVEL_INFO, "Importing full history for chat '{}'".format(chat.title))
 
-            async for message in tg_client.iter_messages(chat, reverse=True):
+            async for message in tg_client.iter_messages(chat, offset_date=offset_date, reverse=True):
                 await index_message(message)
 
         logging.log(LOG_LEVEL_INFO, "Import finished")
