@@ -70,6 +70,8 @@ async def main():
             async for message in tg_client.iter_messages(chat, reverse=True):
                 await index_message(message)
 
+        logging.log(LOG_LEVEL_INFO, "Import finished")
+
 
 with tg_client:
     loop = asyncio.get_event_loop()
