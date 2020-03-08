@@ -51,6 +51,7 @@ async def index_message(message):
 
 async def main():
     @tg_client.on(events.NewMessage())
+    @tg_client.on(events.MessageEdited())
     async def handler(event):
         await index_message(event.message)
 
