@@ -109,6 +109,11 @@ build-samba:
   script:
     - ./build-image.sh samba
 
+build-tg-chat2elastic:
+  stage: build
+  script:
+    - ./build-image.sh tg-chat2elastic
+
 build-tvheadend:
   stage: build
   script:
