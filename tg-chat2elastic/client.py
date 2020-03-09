@@ -14,6 +14,9 @@ from telethon.tl.types import PeerUser, User
 api_id = os.getenv("TG_API_ID")
 api_hash = os.getenv("TG_API_HASH")
 
+index_prefix = os.getenv("ES_INDEX_PREFIX", "telegram")
+index_date_format = os.getenv("ES_INDEX_DATE_FORMAT")
+
 LOG_LEVEL_INFO = 35
 
 logging.basicConfig(format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING)
@@ -46,7 +49,12 @@ async def index_message(message):
         "message": message.text
     }
 
-    es_client.index("telegram-{}".format(message.date.strftime("%Y.%m")), body=doc_data, id=message.id)
+    if index_date_format is None:
+        index_name = index_prefix
+    else:
+        index_name = "-".join([index_prefix, message.date.strftime(index_date_format)])
+
+    es_client.index(index_name, body=doc_data, id=message.id)
 
 
 async def main():
