@@ -79,10 +79,10 @@ build-minecraft-bukkit-1.15:
   script:
     - ./build-image.sh minecraft-bukkit 1.15 --build-arg MINECRAFT_VERSION=1.15
 
-build-minecraft-forge:
-  stage: build
-  script:
-    - ./build-image.sh minecraft-forge
+#build-minecraft-forge:
+#  stage: build
+#  script:
+#    - ./build-image.sh minecraft-forge
 
 build-nagflux:
   stage: build
