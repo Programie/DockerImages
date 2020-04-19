@@ -99,11 +99,6 @@ build-oscam:
   script:
     - ./build-image.sh oscam
 
-build-overviewer:
-  stage: build
-  script:
-    - ./build-image.sh overviewer
-
 build-samba:
   stage: build
   script:
