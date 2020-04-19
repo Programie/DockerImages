@@ -59,11 +59,6 @@ build-letsencrypt:
   script:
     - ./build-image.sh letsencrypt
 
-build-matterbridge:
-  stage: build
-  script:
-    - ./build-image.sh matterbridge
-
 build-minecraft-bukkit-1.12.2:
   stage: build
   script:
