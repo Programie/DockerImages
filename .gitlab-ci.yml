@@ -21,8 +21,7 @@ before_script:
 
 build-bind:
   stage: build
-  script:
-    - ./build-image.sh bind
+  script: "./build-image.sh bind"
   only:
     changes:
       - gitlab-ci.yml
@@ -31,8 +30,7 @@ build-bind:
 
 build-carddav2fb:
   stage: build
-  script:
-    - ./build-image.sh carddav2fb
+  script: "./build-image.sh carddav2fb"
   only:
     changes:
       - gitlab-ci.yml
@@ -41,8 +39,7 @@ build-carddav2fb:
 
 build-dovecot:
   stage: build
-  script:
-    - ./build-image.sh dovecot
+  script: "./build-image.sh dovecot"
   only:
     changes:
       - gitlab-ci.yml
@@ -51,8 +48,7 @@ build-dovecot:
 
 build-elastic-aggregate:
   stage: build
-  script:
-    - ./build-image.sh elastic-aggregate
+  script: "./build-image.sh elastic-aggregate"
   only:
     changes:
       - gitlab-ci.yml
@@ -61,8 +57,7 @@ build-elastic-aggregate:
 
 build-fritzbox2elastic:
   stage: build
-  script:
-    - ./build-image.sh fritzbox2elastic
+  script: "./build-image.sh fritzbox2elastic"
   only:
     changes:
       - gitlab-ci.yml
@@ -71,8 +66,7 @@ build-fritzbox2elastic:
 
 build-g10k:
   stage: build
-  script:
-    - ./build-image.sh g10k
+  script: "./build-image.sh g10k"
   only:
     changes:
       - gitlab-ci.yml
@@ -81,8 +75,7 @@ build-g10k:
 
 build-generic-web:
   stage: build
-  script:
-    - ./build-image.sh generic-web
+  script: "./build-image.sh generic-web"
   only:
     changes:
       - gitlab-ci.yml
@@ -91,8 +84,7 @@ build-generic-web:
 
 build-letsencrypt:
   stage: build
-  script:
-    - ./build-image.sh letsencrypt
+  script: "./build-image.sh letsencrypt"
   only:
     changes:
       - gitlab-ci.yml
@@ -101,8 +93,7 @@ build-letsencrypt:
 
 build-minecraft-bukkit-1.12.2:
   stage: build
-  script:
-    - ./build-image.sh minecraft-bukkit 1.12.2 --build-arg MINECRAFT_VERSION=1.12.2
+  script: "./build-image.sh minecraft-bukkit 1.12.2 --build-arg MINECRAFT_VERSION=1.12.2"
   only:
     changes:
       - gitlab-ci.yml
@@ -111,8 +102,7 @@ build-minecraft-bukkit-1.12.2:
 
 build-minecraft-bukkit-1.14.4:
   stage: build
-  script:
-    - ./build-image.sh minecraft-bukkit 1.14.4 --build-arg MINECRAFT_VERSION=1.14.4
+  script: "./build-image.sh minecraft-bukkit 1.14.4 --build-arg MINECRAFT_VERSION=1.14.4"
   only:
     changes:
       - gitlab-ci.yml
@@ -121,8 +111,7 @@ build-minecraft-bukkit-1.14.4:
 
 build-minecraft-bukkit-1.15:
   stage: build
-  script:
-    - ./build-image.sh minecraft-bukkit 1.15 --build-arg MINECRAFT_VERSION=1.15
+  script: "./build-image.sh minecraft-bukkit 1.15 --build-arg MINECRAFT_VERSION=1.15"
   only:
     changes:
       - gitlab-ci.yml
@@ -141,8 +130,7 @@ build-minecraft-bukkit-1.15:
 
 build-nagflux:
   stage: build
-  script:
-    - ./build-image.sh nagflux
+  script: "./build-image.sh nagflux"
   only:
     changes:
       - gitlab-ci.yml
@@ -151,8 +139,7 @@ build-nagflux:
 
 build-nginx:
   stage: build
-  script:
-    - ./build-image.sh nginx
+  script: "./build-image.sh nginx"
   only:
     changes:
       - gitlab-ci.yml
@@ -161,8 +148,7 @@ build-nginx:
 
 build-oscam:
   stage: build
-  script:
-    - ./build-image.sh oscam
+  script: "./build-image.sh oscam"
   only:
     changes:
       - gitlab-ci.yml
@@ -171,8 +157,7 @@ build-oscam:
 
 build-samba:
   stage: build
-  script:
-    - ./build-image.sh samba
+  script: "./build-image.sh samba"
   only:
     changes:
       - gitlab-ci.yml
@@ -181,8 +166,7 @@ build-samba:
 
 build-tvheadend:
   stage: build
-  script:
-    - ./build-image.sh tvheadend
+  script: "./build-image.sh tvheadend"
   only:
     changes:
       - gitlab-ci.yml
@@ -191,8 +175,7 @@ build-tvheadend:
 
 build-unifi:
   stage: build
-  script:
-    - ./build-image.sh unifi
+  script: "./build-image.sh unifi"
   only:
     changes:
       - gitlab-ci.yml
