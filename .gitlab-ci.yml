@@ -23,88 +23,178 @@ build-bind:
   stage: build
   script:
     - ./build-image.sh bind
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - bind/**/*
 
 build-carddav2fb:
   stage: build
   script:
     - ./build-image.sh carddav2fb
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - carddav2fb/**/*
 
 build-dovecot:
   stage: build
   script:
     - ./build-image.sh dovecot
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - covecot/**/*
 
 build-elastic-aggregate:
   stage: build
   script:
     - ./build-image.sh elastic-aggregate
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - elastic-aggregate/**/*
 
 build-fritzbox2elastic:
   stage: build
   script:
     - ./build-image.sh fritzbox2elastic
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - fritzbox2elastic/**/*
 
 build-g10k:
   stage: build
   script:
     - ./build-image.sh g10k
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - g10k/**/*
 
 build-generic-web:
   stage: build
   script:
     - ./build-image.sh generic-web
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - generic-web/**/*
 
 build-letsencrypt:
   stage: build
   script:
     - ./build-image.sh letsencrypt
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - letsencrypt/**/*
 
 build-minecraft-bukkit-1.12.2:
   stage: build
   script:
     - ./build-image.sh minecraft-bukkit 1.12.2 --build-arg MINECRAFT_VERSION=1.12.2
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - minecraft-bukkit/**/*
 
 build-minecraft-bukkit-1.14.4:
   stage: build
   script:
     - ./build-image.sh minecraft-bukkit 1.14.4 --build-arg MINECRAFT_VERSION=1.14.4
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - minecraft-bukkit/**/*
 
 build-minecraft-bukkit-1.15:
   stage: build
   script:
     - ./build-image.sh minecraft-bukkit 1.15 --build-arg MINECRAFT_VERSION=1.15
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - minecraft-bukkit/**/*
 
 #build-minecraft-forge:
 #  stage: build
 #  script:
 #    - ./build-image.sh minecraft-forge
+#  only:
+#    changes:
+#      - gitlab-ci.yml
+#      - build-image.sh
+#      - minecraft-forge/**/*
 
 build-nagflux:
   stage: build
   script:
     - ./build-image.sh nagflux
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - nagflux/**/*
 
 build-nginx:
   stage: build
   script:
     - ./build-image.sh nginx
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - nginx/**/*
 
 build-oscam:
   stage: build
   script:
     - ./build-image.sh oscam
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - oscam/**/*
 
 build-samba:
   stage: build
   script:
     - ./build-image.sh samba
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - samba/**/*
 
 build-tvheadend:
   stage: build
   script:
     - ./build-image.sh tvheadend
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - tvheadend/**/*
 
 build-unifi:
   stage: build
   script:
     - ./build-image.sh unifi
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - unifi/**/*
