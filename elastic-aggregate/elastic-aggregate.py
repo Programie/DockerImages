@@ -129,7 +129,7 @@ def aggregate_index(es_client, index, new_index, fields, sum_fields, keep_fields
                 field_values[field] = value
 
                 if value is not None:
-                    key += value
+                    key += str(value)
 
             if key in documents:
                 item = documents[key]
