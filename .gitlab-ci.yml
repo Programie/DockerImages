@@ -155,15 +155,6 @@ build-oscam:
       - build-image.sh
       - oscam/**/*
 
-build-proftpd:
-  stage: build
-  script: "./build-image.sh proftpd"
-  only:
-    changes:
-      - gitlab-ci.yml
-      - build-image.sh
-      - proftpd/**/*
-
 build-samba:
   stage: build
   script: "./build-image.sh samba"
