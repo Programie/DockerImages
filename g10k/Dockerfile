@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 ENV G10K_VERSION=0.6
 

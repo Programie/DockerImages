@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 ENV NAGFLUX_VERSION=0.4.1
 

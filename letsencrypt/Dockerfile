@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 ENV DOCKER_GEN_VERSION 0.7.3
 ENV DOCKER_GEN_DOWNLOAD_URL https://github.com/jwilder/docker-gen/releases/download/$DOCKER_GEN_VERSION/docker-gen-alpine-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
