@@ -1,7 +1,6 @@
 FROM linuxserver/tvheadend
 
-RUN apk add python3 && \
-    pip3 install --upgrade pip && \
+RUN apk add python3 py3-pip && \
     pip3 install requests
 
 COPY fetch-picons.py /opt/fetch-picons.py
