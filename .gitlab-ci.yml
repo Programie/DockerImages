@@ -118,6 +118,15 @@ build-minecraft-bukkit-1.15.2:
       - build-image.sh
       - minecraft-bukkit/**/*
 
+build-minecraft-bukkit-1.16.1:
+  stage: build
+  script: "./build-image.sh minecraft-bukkit 1.16.1 --build-arg MINECRAFT_VERSION=1.16.1"
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - minecraft-bukkit/**/*
+
 #build-minecraft-forge:
 #  stage: build
 #  script:
