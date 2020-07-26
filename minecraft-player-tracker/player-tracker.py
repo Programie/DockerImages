@@ -37,7 +37,7 @@ class Handler(FileSystemEventHandler):
 
                 print({
                     "key": key,
-                    "@timestamp": json_data["timestamp"],
+                    "timestamp": json_data["timestamp"],
                     "player": player_name,
                     "world": world,
                     "x": x,
