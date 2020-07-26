@@ -4,6 +4,7 @@ import json
 import os
 
 import time
+from datetime import datetime
 from fnmatch import fnmatch
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler, FileMovedEvent
@@ -37,7 +38,7 @@ class Handler(FileSystemEventHandler):
 
                 print(json.dumps({
                     "key": key,
-                    "timestamp": int(json_data["timestamp"] / 1000),
+                    "timestamp": datetime.utcfromtimestamp(json_data["timestamp"] / 1000).strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "player": player_name,
                     "world": world,
                     "x": x,
