@@ -137,6 +137,15 @@ build-minecraft-bukkit-1.16.1:
 #      - build-image.sh
 #      - minecraft-forge/**/*
 
+build-minecraft-player-tracker:
+  stage: build
+  script: "./build-image.sh minecraft-player-tracker"
+  only:
+    changes:
+      - gitlab-ci.yml
+      - build-image.sh
+      - minecraft-player-tracker/**/*
+
 build-nagflux:
   stage: build
   script: "./build-image.sh nagflux"
