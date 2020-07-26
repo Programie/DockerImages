@@ -4,7 +4,6 @@ import json
 import os
 
 import time
-from elasticsearch import Elasticsearch
 from fnmatch import fnmatch
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler, FileMovedEvent
@@ -36,17 +35,16 @@ class Handler(FileSystemEventHandler):
 
                 key = "|".join([world, str(x), str(y), str(z), player_name])
 
-                es_client.index(os.environ["ES_INDEX"], {
+                print({
+                    "key": key,
                     "@timestamp": json_data["timestamp"],
                     "player": player_name,
                     "world": world,
                     "x": x,
                     "y": y,
                     "z": z
-                }, id=key)
+                })
 
-
-es_client = Elasticsearch(host=os.environ["ES_HOST"])
 
 observer = Observer()
 
