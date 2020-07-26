@@ -35,7 +35,7 @@ class Handler(FileSystemEventHandler):
 
                 key = "|".join([world, str(x), str(y), str(z), player_name])
 
-                print({
+                print(json.dumps({
                     "key": key,
                     "timestamp": json_data["timestamp"],
                     "player": player_name,
@@ -43,7 +43,7 @@ class Handler(FileSystemEventHandler):
                     "x": x,
                     "y": y,
                     "z": z
-                })
+                }))
 
 
 observer = Observer()
