@@ -3,8 +3,8 @@
 import json
 import os
 
-import redis
 import time
+from elasticsearch import Elasticsearch
 from fnmatch import fnmatch
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler, FileMovedEvent
@@ -36,17 +36,17 @@ class Handler(FileSystemEventHandler):
 
                 key = "|".join([world, str(x), str(y), str(z), player_name])
 
-                redis_connection.set(key, json.dumps({
-                    "timestamp": json_data["timestamp"],
+                es_client.index(os.environ["ES_INDEX"], {
+                    "@timestamp": json_data["timestamp"],
                     "player": player_name,
                     "world": world,
                     "x": x,
                     "y": y,
                     "z": z
-                }))
+                }, id=key)
 
 
-redis_connection = redis.Redis(host="localhost")
+es_client = Elasticsearch(host=os.environ["ES_HOST"])
 
 observer = Observer()
 

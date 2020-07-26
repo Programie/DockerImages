@@ -1,6 +1,6 @@
-FROM python
+FROM python:3.8-buster
 
-RUN pip install redis watchdog
+RUN pip install elasticsearch watchdog
 
 COPY player-tracker.py /player-tracker.py
 
