@@ -37,7 +37,7 @@ class Handler(FileSystemEventHandler):
 
                 print(json.dumps({
                     "key": key,
-                    "timestamp": json_data["timestamp"],
+                    "timestamp": int(json_data["timestamp"] / 1000),
                     "player": player_name,
                     "world": world,
                     "x": x,
