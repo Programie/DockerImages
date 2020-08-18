@@ -5,7 +5,7 @@ ENV DOCKER_GEN_DOWNLOAD_URL https://github.com/jwilder/docker-gen/releases/downl
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
 RUN apt-get update && \
-    apt-get install -y certbot curl && \
+    apt-get install -y certbot python3-certbot-dns-rfc2136 curl && \
     rm -rf /var/lib/apt/lists/*
 
 RUN curl -sSL $DOCKER_GEN_DOWNLOAD_URL | tar xvz -C /usr/local/bin
