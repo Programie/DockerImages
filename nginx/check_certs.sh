@@ -6,10 +6,8 @@ days_warn=21
 days_crit=7
 
 for conf_file in /etc/nginx/conf.d/*.conf; do
-    for entry in $(fgrep "# cert_check:" ${conf_file} | cut -d "#" -f 2 | cut -d ":" -f 2); do
-        domain_name=$(echo ${entry} | cut -d "|" -f 1)
-        cert_file=$(echo ${entry} | cut -d "|" -f 2)
-
+    for cert_file in $(grep -F "# cert_check:" ${conf_file} | cut -d "#" -f 2 | cut -d ":" -f 2 | sort | uniq); do
+        domain_name=$(openssl x509 -in ${cert_file} -noout -subject | tr -d ' ' | grep -E -o 'CN=(.*)' | cut -d '=' -f 2)
         expire_date=$(openssl x509 -in ${cert_file} -noout -enddate | cut -d = -f 2)
         days_left=$(echo "(" $(date -d "${expire_date}" +%s) - $(date +%s) ")" / 86400 | bc)
 
