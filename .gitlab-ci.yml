@@ -25,7 +25,6 @@ build-bind:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - bind/**/*
 
@@ -35,7 +34,6 @@ build-carddav2fb:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - carddav2fb/**/*
 
@@ -45,7 +43,6 @@ build-dovecot:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - covecot/**/*
 
@@ -55,7 +52,6 @@ build-elastic-aggregate:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - elastic-aggregate/**/*
 
@@ -65,7 +61,6 @@ build-fritzbox2elastic:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - fritzbox2elastic/**/*
 
@@ -75,7 +70,6 @@ build-g10k:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - g10k/**/*
 
@@ -85,7 +79,6 @@ build-generic-web:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - generic-web/**/*
 
@@ -95,7 +88,6 @@ build-letsencrypt:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - letsencrypt/**/*
 
@@ -105,7 +97,6 @@ build-minecraft-bukkit-1.12.2:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - minecraft-bukkit/**/*
 
@@ -115,7 +106,6 @@ build-minecraft-bukkit-1.14.4:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - minecraft-bukkit/**/*
 
@@ -125,7 +115,6 @@ build-minecraft-bukkit-1.15.2:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - minecraft-bukkit/**/*
 
@@ -135,7 +124,6 @@ build-minecraft-bukkit-1.16.1:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - minecraft-bukkit/**/*
 
@@ -146,7 +134,6 @@ build-minecraft-bukkit-1.16.1:
 #  only:
 #    changes:
 #      - .gitlab-ci.yml
-#      - build-all.sh
 #      - build-image.sh
 #      - minecraft-forge/**/*
 
@@ -156,7 +143,6 @@ build-minecraft-player-tracker:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - minecraft-player-tracker/**/*
 
@@ -166,7 +152,6 @@ build-nagflux:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - nagflux/**/*
 
@@ -176,7 +161,6 @@ build-nginx:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - nginx/**/*
 
@@ -186,7 +170,6 @@ build-oscam:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - oscam/**/*
 
@@ -196,7 +179,6 @@ build-samba:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - samba/**/*
 
@@ -206,7 +188,6 @@ build-tvheadend:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - tvheadend/**/*
 
@@ -216,6 +197,5 @@ build-unifi:
   only:
     changes:
       - .gitlab-ci.yml
-      - build-all.sh
       - build-image.sh
       - unifi/**/*
