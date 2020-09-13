@@ -24,7 +24,7 @@ build-bind:
   script: "./build-image.sh bind"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - bind/**/*
@@ -34,7 +34,7 @@ build-carddav2fb:
   script: "./build-image.sh carddav2fb"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - carddav2fb/**/*
@@ -44,7 +44,7 @@ build-dovecot:
   script: "./build-image.sh dovecot"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - covecot/**/*
@@ -54,7 +54,7 @@ build-elastic-aggregate:
   script: "./build-image.sh elastic-aggregate"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - elastic-aggregate/**/*
@@ -64,7 +64,7 @@ build-fritzbox2elastic:
   script: "./build-image.sh fritzbox2elastic"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - fritzbox2elastic/**/*
@@ -74,7 +74,7 @@ build-g10k:
   script: "./build-image.sh g10k"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - g10k/**/*
@@ -84,7 +84,7 @@ build-generic-web:
   script: "./build-image.sh generic-web"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - generic-web/**/*
@@ -94,7 +94,7 @@ build-letsencrypt:
   script: "./build-image.sh letsencrypt"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - letsencrypt/**/*
@@ -104,7 +104,7 @@ build-minecraft-bukkit-1.12.2:
   script: "./build-image.sh minecraft-bukkit 1.12.2 --build-arg MINECRAFT_VERSION=1.12.2"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - minecraft-bukkit/**/*
@@ -114,7 +114,7 @@ build-minecraft-bukkit-1.14.4:
   script: "./build-image.sh minecraft-bukkit 1.14.4 --build-arg MINECRAFT_VERSION=1.14.4"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - minecraft-bukkit/**/*
@@ -124,7 +124,7 @@ build-minecraft-bukkit-1.15.2:
   script: "./build-image.sh minecraft-bukkit 1.15.2 --build-arg MINECRAFT_VERSION=1.15.2"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - minecraft-bukkit/**/*
@@ -134,7 +134,7 @@ build-minecraft-bukkit-1.16.1:
   script: "./build-image.sh minecraft-bukkit 1.16.1 --build-arg MINECRAFT_VERSION=1.16.1"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - minecraft-bukkit/**/*
@@ -145,7 +145,7 @@ build-minecraft-bukkit-1.16.1:
 #    - ./build-image.sh minecraft-forge
 #  only:
 #    changes:
-#      - gitlab-ci.yml
+#      - .gitlab-ci.yml
 #      - build-all.sh
 #      - build-image.sh
 #      - minecraft-forge/**/*
@@ -155,7 +155,7 @@ build-minecraft-player-tracker:
   script: "./build-image.sh minecraft-player-tracker"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - minecraft-player-tracker/**/*
@@ -165,7 +165,7 @@ build-nagflux:
   script: "./build-image.sh nagflux"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - nagflux/**/*
@@ -175,7 +175,7 @@ build-nginx:
   script: "./build-image.sh nginx"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - nginx/**/*
@@ -185,7 +185,7 @@ build-oscam:
   script: "./build-image.sh oscam"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - oscam/**/*
@@ -195,7 +195,7 @@ build-samba:
   script: "./build-image.sh samba"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - samba/**/*
@@ -205,7 +205,7 @@ build-tvheadend:
   script: "./build-image.sh tvheadend"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - tvheadend/**/*
@@ -215,7 +215,7 @@ build-unifi:
   script: "./build-image.sh unifi"
   only:
     changes:
-      - gitlab-ci.yml
+      - .gitlab-ci.yml
       - build-all.sh
       - build-image.sh
       - unifi/**/*
