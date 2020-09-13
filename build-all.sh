@@ -20,6 +20,6 @@ for dir in ${script_dir}/*; do
     ${script_dir}/build-image.sh ${image}
 done
 
-for minecraft_version in 1.12.2 1.14.4 1.15.2 1.16.1; do
+for minecraft_version in 1.12.2 1.14.4 1.15.2 1.16.2; do
     ${script_dir}/build-image.sh minecraft-bukkit ${minecraft_version} --build-arg MINECRAFT_VERSION=${minecraft_version}
 done
