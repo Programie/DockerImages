@@ -11,7 +11,15 @@ from fritzconnection import FritzConnection
 
 timezone = pytz.timezone(os.getenv("TZ", "UTC"))
 
-es_client = Elasticsearch(hosts=os.getenv("ES_HOST", "elasticsearch"))
+elasticsearch_username = os.getenv("ES_USERNAME")
+elasticsearch_password = os.getenv("ES_PASSWORD")
+
+if elasticsearch_username is not None and elasticsearch_password is not None:
+    elasticsearch_httpauth = [elasticsearch_username, elasticsearch_password]
+else:
+    elasticsearch_httpauth = None
+
+es_client = Elasticsearch(hosts=os.getenv("ES_HOST", "elasticsearch"), httpauth=elasticsearch_httpauth)
 fritzbox_client = FritzConnection(address=os.getenv("FRITZ_HOST"))
 
 index_prefix = os.getenv("ES_INDEX_PREFIX", "fritzbox")
