@@ -349,7 +349,15 @@ def main():
     console_logger.setFormatter(logging.Formatter("[%(asctime)s] %(levelname)s:%(name)s: %(message)s"))
     logger.addHandler(console_logger)
 
-    es_client = Elasticsearch(hosts=arguments.host, timeout=int(arguments.timeout))
+    elasticsearch_username = os.getenv("ES_USERNAME")
+    elasticsearch_password = os.getenv("ES_PASSWORD")
+
+    if elasticsearch_username is not None and elasticsearch_password is not None:
+        elasticsearch_httpauth = [elasticsearch_username, elasticsearch_password]
+    else:
+        elasticsearch_httpauth = None
+
+    es_client = Elasticsearch(hosts=arguments.host, timeout=int(arguments.timeout), http_auth=elasticsearch_httpauth)
 
     aggregate_indices(es_client=es_client, pattern=arguments.pattern, fields=arguments.group_field, sum_fields=arguments.sum_field, keep_fields=arguments.keep_field, logger=logger, dryrun=arguments.dryrun)
 
