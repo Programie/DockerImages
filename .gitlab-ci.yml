@@ -164,6 +164,15 @@ build-nginx:
       - build-image.sh
       - nginx/**/*
 
+build-ocrmypdf-inotify:
+  stage: build
+  script: "./build-image.sh ocrmypdf-inotify"
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - build-image.sh
+      - ocrmypdf-inotify/**/*
+
 build-oscam:
   stage: build
   script: "./build-image.sh oscam"
