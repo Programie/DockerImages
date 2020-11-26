@@ -1,7 +1,8 @@
 #! /bin/bash
 
-base_dir="$1"
-input_filename="$2"
+input_filepath="$1"
+base_dir=$(dirname "${input_filepath}")
+input_filename=$(basename "${input_filepath}")
 output_filename="${input_filename%.pdf}_ocr.pdf"
 
 # Input file is not a PDF file

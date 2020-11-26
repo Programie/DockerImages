@@ -1,12 +1,11 @@
 FROM jbarlow83/ocrmypdf
 
 RUN apt-get update && \
-    apt-get install -y incron; \
+    apt-get install -y inotify-tools; \
     rm -rf /var/lib/apt/lists/*
 
-RUN echo '/workdir IN_CLOSE_WRITE,IN_NO_LOOP ocrmypdf-inotify-helper $@ $#' > /etc/incron.d/ocrmypdf
-
 COPY ./ocrmypdf-inotify-helper.sh /usr/local/bin/ocrmypdf-inotify-helper
+COPY ./entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["incrond"]
-CMD ["--foreground"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["run"]
