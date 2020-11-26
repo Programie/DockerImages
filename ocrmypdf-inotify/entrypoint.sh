@@ -4,8 +4,7 @@ case "$1" in
     run)
         inotifywait \
             --format "%w/%f" \
-            --event close_write \
-            --event moved_to \
+            --event "${INOTIFY_EVENT:-close_write}" \
             --recursive \
             --monitor \
             /workdir | xargs -I{} ocrmypdf-inotify-helper {}
