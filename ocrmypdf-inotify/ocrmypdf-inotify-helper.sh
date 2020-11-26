@@ -16,10 +16,10 @@ fi
 
 echo "Processing ${input_filename}"
 
-ocrmypdf -l ${OCRMYPDF_LANG:-eng} ${base_dir}/${input_filename} ${base_dir}/${output_filename}
+ocrmypdf -l "${OCRMYPDF_LANG:-eng}" "${base_dir}/${input_filename}" "${base_dir}/${output_filename}"
 
 echo "Saved to ${output_filename}"
 
 if [[ -n ${OCRMYPDF_CHOWN} ]]; then
-    chown -c ${OCRMYPDF_CHOWN} ${base_dir}/${output_filename}
+    chown -c "${OCRMYPDF_CHOWN}" "${base_dir}/${output_filename}"
 fi
