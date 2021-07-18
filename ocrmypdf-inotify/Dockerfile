@@ -1,7 +1,7 @@
 FROM jbarlow83/ocrmypdf
 
 RUN apt-get update && \
-    apt-get install -y inotify-tools; \
+    apt-get install -y inotify-tools && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ./ocrmypdf-inotify-helper.sh /usr/local/bin/ocrmypdf-inotify-helper
