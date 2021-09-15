@@ -3,15 +3,14 @@
 # Author: Florent CHAUVEAU <florent.chauveau@gmail.com>
 # Mentioned here: https://blog.callr.tech/building-docker-images-with-gitlab-ci-best-practices/
 
-# do not use "latest" here, if you want this to work in the future
-image: docker:18.09.7
+image: jdrouet/docker-with-buildx:stable
 
 stages:
   - build
 
 # Use this if your GitLab runner does not use socket binding
 services:
-  - docker:18.09.7-dind
+  - docker:dind
 
 before_script:
   # docker login asks for the password to be passed through stdin for security
