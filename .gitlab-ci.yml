@@ -156,7 +156,7 @@ build-nagflux:
 
 build-nginx:
   stage: build
-  script: "./build-image.sh nginx"
+  script: "./build-image.sh nginx latest multiarch"
   only:
     changes:
       - .gitlab-ci.yml
