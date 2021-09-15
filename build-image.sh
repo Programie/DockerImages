@@ -17,10 +17,10 @@ if [[ -z ${tag} ]]; then
     tag="latest"
 fi
 
-if [[ -z ${multiarch} ]]; then
-    platform="linux/amd64"
-else
+if [[ ${multiarch} == "multiarch" ]]; then
     platform="linux/amd64,linux/arm/v7,linux/arm64/v8"
+else
+    platform="linux/amd64"
 fi
 
 script_dir=$(dirname $(realpath $0))
