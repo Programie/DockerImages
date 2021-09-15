@@ -27,4 +27,5 @@ script_dir=$(dirname $(realpath $0))
 dir="${script_dir}/${image}"
 full_tag="registry.gitlab.com/programie/dockerimages/${image}:${tag}"
 
+docker buildx create --use
 docker buildx build --pull --push --no-cache "$@" --tag "${full_tag}" --platform "${platform}" "${dir}"
