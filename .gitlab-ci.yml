@@ -83,7 +83,7 @@ build-generic-web:
 
 build-letsencrypt:
   stage: build
-  script: "./build-image.sh letsencrypt"
+  script: "./build-image.sh letsencrypt latest multiarch"
   only:
     changes:
       - .gitlab-ci.yml
