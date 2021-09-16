@@ -18,7 +18,7 @@ if [[ -z ${tag} ]]; then
 fi
 
 if [[ ${multiarch} == "multiarch" ]]; then
-    platform="linux/amd64,linux/arm/v7,linux/arm64/v8"
+    platform="linux/amd64,linux/arm/v7"
 else
     platform="linux/amd64"
 fi
