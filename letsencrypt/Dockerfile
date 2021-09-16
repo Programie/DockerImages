@@ -14,7 +14,7 @@ RUN case ${TARGETARCH} in \
         arm) ARCH="armhf";; \
         arm64) ARCH="arm64";; \
     esac; \
-    curl -sSL https://github.com/jwilder/docker-gen/releases/download/${DOCKER_GEN_VERSION}/docker-gen-alpine-linux-${ARCH}-${DOCKER_GEN_VERSION}.tar.gz | tar xvz -C /usr/local/bin
+    curl -sSL https://github.com/jwilder/docker-gen/releases/download/${DOCKER_GEN_VERSION}/docker-gen-linux-${ARCH}-${DOCKER_GEN_VERSION}.tar.gz | tar xvz -C /usr/local/bin
 
 COPY . /app
 
