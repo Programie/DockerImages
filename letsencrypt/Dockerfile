@@ -2,7 +2,7 @@ FROM debian:buster
 
 ARG TARGETARCH
 
-ENV DOCKER_GEN_VERSION 0.7.3
+ENV DOCKER_GEN_VERSION 0.7.7
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
 RUN apt-get update && \
