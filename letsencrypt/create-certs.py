@@ -31,6 +31,7 @@ def create_cert(domain_config: str):
             command.append("-w")
             command.append(webroot)
 
+        command.append("-d")
         command.append(domains)
 
         subprocess.run(command)
