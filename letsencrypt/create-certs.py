@@ -4,7 +4,8 @@ import os
 import subprocess
 import sys
 
-certs_dir = "/etc/letsencrypt/live"
+letsencrypt_dir = "/etc/letsencrypt"
+certs_dir = os.path.join(letsencrypt_dir, "live")
 webroot = "/webroot"
 email_address = os.environ["LETSENCRYPT_EMAIL"]
 
@@ -26,6 +27,8 @@ def create_cert(domain_config: str):
 
         if "dns_rfc2136" in options:
             command.append("--dns-rfc2136")
+            command.append("--dns-rfc2136-credentials")
+            command.append(os.path.join(letsencrypt_dir, "certbot-credentials.ini"))
         else:
             command.append("--webroot")
             command.append("-w")
