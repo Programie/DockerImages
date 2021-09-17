@@ -6,7 +6,7 @@ ENV DOCKER_GEN_VERSION 0.7.7
 ENV DOCKER_HOST unix:///tmp/docker.sock
 
 RUN apt-get update && \
-    apt-get install -y certbot python3-certbot-dns-rfc2136 curl && \
+    apt-get install -y python3 certbot python3-certbot-dns-rfc2136 curl && \
     rm -rf /var/lib/apt/lists/*
 
 RUN case ${TARGETARCH} in \
