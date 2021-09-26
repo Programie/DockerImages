@@ -27,15 +27,6 @@ build-bind:
       - build-image.sh
       - bind/**/*
 
-build-carddav2fb:
-  stage: build
-  script: "./build-image.sh carddav2fb"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - carddav2fb/**/*
-
 build-dovecot:
   stage: build
   script: "./build-image.sh dovecot"
