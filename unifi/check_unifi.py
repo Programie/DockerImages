@@ -21,7 +21,7 @@ def sizeof_fmt(num, suffix="B"):
     return "%.1f%s%s" % (num, "Y", suffix)
 
 
-controller = Controller(host="localhost", port=8443, username=username, password=password, site_id=site_id, ssl_verify=ssl_verify)
+controller = Controller(host="unifi.selfcoders.org", port=443, username=username, password=password, site_id=site_id, ssl_verify=ssl_verify)
 
 ap_clients = {}
 
@@ -59,7 +59,7 @@ for ap in controller.get_aps():
 
             if uplink_speed != expected_uplink_speed:
                 status = max(status, 2)
-                status_text.append("Uplink: {} MBit/s but expected {} MBit/s (!!)".format(ap["uplink"]["speed"], expected_uplink_speed))
+                status_text.append("Uplink: {} MBit/s but expected {} MBit/s (!!)".format(uplink_speed, expected_uplink_speed))
 
         client_count = len(clients)
 
