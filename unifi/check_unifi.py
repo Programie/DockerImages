@@ -21,7 +21,7 @@ def sizeof_fmt(num, suffix="B"):
     return "%.1f%s%s" % (num, "Y", suffix)
 
 
-controller = Controller(host="unifi.selfcoders.org", port=443, username=username, password=password, site_id=site_id, ssl_verify=ssl_verify)
+controller = Controller(host="localhost", port=8443, username=username, password=password, site_id=site_id, ssl_verify=ssl_verify)
 
 ap_clients = {}
 
