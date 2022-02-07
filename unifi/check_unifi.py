@@ -1,11 +1,13 @@
 #! /usr/bin/env python3
-import json
+
 import os
 import re
 import sys
 
 from pyunifi.controller import Controller
 
+host = os.getenv("UNIFI_API_HOST", "localhost")
+port = int(os.getenv("UNIFI_API_PORT", "8443"))
 username = os.getenv("UNIFI_API_USERNAME")
 password = os.getenv("UNIFI_API_PASSWORD")
 site_id = os.getenv("UNIFI_API_SITEID", "default")
@@ -21,7 +23,7 @@ def sizeof_fmt(num, suffix="B"):
     return "%.1f%s%s" % (num, "Y", suffix)
 
 
-controller = Controller(host="localhost", port=8443, username=username, password=password, site_id=site_id, ssl_verify=ssl_verify)
+controller = Controller(host=host, port=port, username=username, password=password, site_id=site_id, ssl_verify=ssl_verify)
 
 ap_clients = {}
 
