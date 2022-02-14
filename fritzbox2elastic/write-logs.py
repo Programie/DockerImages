@@ -43,7 +43,7 @@ for line in fritzbox_client.call_action("DeviceInfo1", "GetDeviceLog")["NewDevic
     else:
         index_name = "-".join([index_prefix, date.strftime(index_date_format)])
 
-    es_client.index(index_name, {
+    es_client.index(index=index_name, document={
         "timestamp": date,
         "message": message
     }, id=doc_id)
