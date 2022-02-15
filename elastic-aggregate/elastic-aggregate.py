@@ -202,7 +202,7 @@ def aggregate_index(es_client, index, new_index, fields, sum_fields, keep_fields
 def aggregate_indices(es_client, pattern, fields, sum_fields, keep_fields, logger, dryrun=False):
     logger.info("Getting indices matching '{}'".format(pattern))
 
-    indices = es_client.indices.get(pattern)
+    indices = es_client.indices.get(index=pattern)
 
     logger.info("Got {} indices".format(len(indices)))
 
@@ -240,7 +240,7 @@ def aggregate_count(es_client, search_index, logger):
     logger.info("summing up count in index '{}' (date: {})".format(index, date))
 
     raw_documents_count = 0
-    indices = es_client.indices.get(index)
+    indices = es_client.indices.get(index=index)
     for index in indices:
         response = es_client.search(
             index=index,
