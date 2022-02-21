@@ -81,15 +81,6 @@ build-letsencrypt:
       - build-image.sh
       - letsencrypt/**/*
 
-build-minecraft-player-tracker:
-  stage: build
-  script: "./build-image.sh minecraft-player-tracker"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - minecraft-player-tracker/**/*
-
 build-nagflux:
   stage: build
   script: "./build-image.sh nagflux"
