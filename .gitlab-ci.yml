@@ -34,7 +34,7 @@ build-dovecot:
     changes:
       - .gitlab-ci.yml
       - build-image.sh
-      - covecot/**/*
+      - dovecot/**/*
 
 build-elastic-aggregate:
   stage: build
