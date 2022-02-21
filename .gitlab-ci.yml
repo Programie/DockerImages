@@ -117,15 +117,6 @@ build-ocrmypdf-inotify:
       - build-image.sh
       - ocrmypdf-inotify/**/*
 
-build-oscam:
-  stage: build
-  script: "./build-image.sh oscam"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - oscam/**/*
-
 build-samba:
   stage: build
   script: "./build-image.sh samba"
@@ -134,15 +125,6 @@ build-samba:
       - .gitlab-ci.yml
       - build-image.sh
       - samba/**/*
-
-build-tvheadend:
-  stage: build
-  script: "./build-image.sh tvheadend"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - tvheadend/**/*
 
 build-unifi:
   stage: build
