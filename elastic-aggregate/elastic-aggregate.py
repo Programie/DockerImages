@@ -49,9 +49,8 @@ def submit_documents(es_client, logger, index, documents, chunk_size):
         logger.warning("Failed to index {} documents into index '{}'".format(failed, index))
 
 
-def aggregate_index(es_client, index, new_index, fields, sum_fields, keep_fields, logger):
+def aggregate_index(es_client, index, new_index, fields, sum_fields, keep_fields, chunk_size, logger):
     scroll_ttl = "2m"  # How long to keep the scroll context alive
-    chunk_size = 1000  # Number of documents to submit in batch
     datetime_format = "%Y-%m-%dT%H:%M:%S.%fZ"  # Datetime format used by Logstash
 
     start_time = time.time()
@@ -199,7 +198,7 @@ def aggregate_index(es_client, index, new_index, fields, sum_fields, keep_fields
     logger.info("Aggregation of index '{}' completed in {} minutes ({} documents, count = {})".format(index, int((time.time() - start_time) / 60), document_count, total_count))
 
 
-def aggregate_indices(es_client, pattern, fields, sum_fields, keep_fields, logger, dryrun=False):
+def aggregate_indices(es_client, pattern, fields, sum_fields, keep_fields, chunk_size, logger, dryrun=False):
     logger.info("Getting indices matching '{}'".format(pattern))
 
     indices = es_client.indices.get(index=pattern)
@@ -219,7 +218,7 @@ def aggregate_indices(es_client, pattern, fields, sum_fields, keep_fields, logge
         logger.info("Aggregating data of index '{}' into '{}'".format(index, new_index))
 
         if not dryrun:
-            aggregate_index(es_client=es_client, index=index, new_index=new_index, fields=fields, sum_fields=sum_fields, keep_fields=keep_fields, logger=logger)
+            aggregate_index(es_client=es_client, index=index, new_index=new_index, fields=fields, sum_fields=sum_fields, keep_fields=keep_fields, chunk_size=chunk_size, logger=logger)
 
         logger.info("waiting 5 seconds to complete indexing new documents")
         time.sleep(5)
@@ -328,6 +327,7 @@ def main():
     argument_parser.add_argument("--group-field", nargs="*", help="the fields used to group the documents together", default=os.getenv("ES_GROUP_FIELDS", "").split(","))
     argument_parser.add_argument("--sum-field", nargs="*", help="the fields which should be summed up", default=os.getenv("ES_SUM_FIELDS", "").split(","))
     argument_parser.add_argument("--keep-field", nargs="*", help="the fields which should be kept (copied) without modification", default=os.getenv("ES_KEEP_FIELDS", "").split(","))
+    argument_parser.add_argument("--chunk-size", help="number of documents to submit in batch", default=os.getenv("ES_CHUNK_SIZE", "1000"))
 
     argument_parser.add_argument("pattern", help="the search pattern used to get the indices")
 
@@ -359,7 +359,7 @@ def main():
 
     es_client = Elasticsearch(hosts=arguments.host, timeout=int(arguments.timeout), http_auth=elasticsearch_httpauth)
 
-    aggregate_indices(es_client=es_client, pattern=arguments.pattern, fields=arguments.group_field, sum_fields=arguments.sum_field, keep_fields=arguments.keep_field, logger=logger, dryrun=arguments.dryrun)
+    aggregate_indices(es_client=es_client, pattern=arguments.pattern, fields=arguments.group_field, sum_fields=arguments.sum_field, keep_fields=arguments.keep_field, chunk_size=int(arguments.chunk_size), logger=logger, dryrun=arguments.dryrun)
 
 
 if __name__ == "__main__":
