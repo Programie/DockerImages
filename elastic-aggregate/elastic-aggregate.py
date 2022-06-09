@@ -353,7 +353,7 @@ def main():
     else:
         elasticsearch_httpauth = None
 
-    es_client = Elasticsearch(hosts=arguments.host, timeout=int(arguments.timeout), http_auth=elasticsearch_httpauth)
+    es_client = Elasticsearch(hosts=arguments.host, request_timeout=int(arguments.timeout), basic_auth=elasticsearch_httpauth)
 
     aggregate_indices(es_client=es_client, pattern=arguments.pattern, fields=arguments.group_field, sum_fields=arguments.sum_field, keep_fields=arguments.keep_field, chunk_size=int(arguments.chunk_size), logger=logger, dryrun=arguments.dryrun)
 
