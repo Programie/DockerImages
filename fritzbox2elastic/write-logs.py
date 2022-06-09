@@ -19,7 +19,7 @@ if elasticsearch_username is not None and elasticsearch_password is not None:
 else:
     elasticsearch_httpauth = None
 
-es_client = Elasticsearch(hosts=os.getenv("ES_HOST", "elasticsearch"), http_auth=elasticsearch_httpauth)
+es_client = Elasticsearch(hosts=os.getenv("ES_HOST", "elasticsearch"), basic_auth=elasticsearch_httpauth)
 fritzbox_client = FritzConnection(address=os.getenv("FRITZ_HOST"))
 
 index_prefix = os.getenv("ES_INDEX_PREFIX", "fritzbox")
