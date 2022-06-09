@@ -62,15 +62,13 @@ def aggregate_index(es_client, index, new_index, fields, sum_fields, keep_fields
         index=index,
         scroll=scroll_ttl,
         size=1000,
-        body={
-            "sort": [
-                {
-                    "@timestamp": {
-                        "order": "asc"
-                    }
+        sort=[
+            {
+                "@timestamp": {
+                    "order": "asc"
                 }
-            ]
-        }
+            }
+        ]
     )
 
     scroll_id = response["_scroll_id"]
@@ -245,15 +243,13 @@ def aggregate_count(es_client, search_index, logger):
             index=index,
             scroll="2m",
             size=2000,
-            body={
-                "sort": [
-                    {
-                        "@timestamp": {
-                            "order": "desc"
-                        }
+            sort=[
+                {
+                    "@timestamp": {
+                        "order": "desc"
                     }
-                ]
-            }
+                }
+            ]
         )
 
         scroll_id = response["_scroll_id"]
