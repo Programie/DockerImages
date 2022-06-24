@@ -63,9 +63,18 @@ build-g10k:
       - build-image.sh
       - g10k/**/*
 
-build-generic-web:
+build-generic-web-php7.4:
   stage: build
-  script: "./build-image.sh generic-web"
+  script: "./build-image.sh generic-web php7.4 amd64 --build-arg PHP_VERSION=7.4"
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - build-image.sh
+      - generic-web/**/*
+
+build-generic-web-php8.1:
+  stage: build
+  script: "./build-image.sh generic-web php8.1 amd64 --build-arg PHP_VERSION=8.1"
   only:
     changes:
       - .gitlab-ci.yml

@@ -1,4 +1,6 @@
-FROM php:8.1-apache
+ARG PHP_VERSION
+
+FROM php:${PHP_VERSION}-apache
 
 RUN echo "ServerTokens Prod" > /etc/apache2/conf-enabled/z-server-tokens.conf && \
     a2enmod rewrite && \
