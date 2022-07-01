@@ -13,3 +13,4 @@ RUN echo "ServerTokens Prod" > /etc/apache2/conf-enabled/z-server-tokens.conf &&
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["apache2-foreground"]
