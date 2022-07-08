@@ -51,7 +51,7 @@ def submit_documents(es_client, logger, index, documents, chunk_size):
 
 def aggregate_index(es_client, index, new_index, fields, sum_fields, keep_fields, chunk_size, logger):
     scroll_ttl = "2m"  # How long to keep the scroll context alive
-    datetime_format = "%Y-%m-%dT%H:%M:%S.%fZ"  # Datetime format used by Logstash
+    datetime_formats = ["%Y-%m-%dT%H:%M:%S.%fZ", "%Y-%m-%dT%H:%M:%SZ"]  # Datetime format used by Logstash
 
     start_time = time.time()
     datetime_start = datetime.datetime.now()
@@ -102,8 +102,17 @@ def aggregate_index(es_client, index, new_index, fields, sum_fields, keep_fields
             processed_documents_count += 1
 
             source = document["_source"]
+            timestamp = None
 
-            timestamp = datetime.datetime.strptime(source["@timestamp"], datetime_format).replace(second=0, microsecond=0).strftime(datetime_format)
+            for datetime_format in datetime_formats:
+                try:
+                    timestamp = datetime.datetime.strptime(source["@timestamp"], datetime_format).replace(second=0, microsecond=0).strftime(datetime_format)
+                    break
+                except ValueError:
+                    pass
+
+            if timestamp is None:
+                raise ValueError("Unable to parse timestamp: {}".format(source["@timestamp"]))
 
             if timestamp != current_timestamp:
                 current_timestamp = timestamp
