@@ -2,6 +2,8 @@ ARG PHP_VERSION
 
 FROM php:${PHP_VERSION}-apache
 
+LABEL org.opencontainers.image.version=$PHP_VERSION
+
 ENV HTTPD_UID=33
 ENV HTTPD_GID=33
 

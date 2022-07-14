@@ -2,6 +2,8 @@ FROM debian:buster
 
 ENV G10K_VERSION=0.6
 
+LABEL org.opencontainers.image.version=$G10K_VERSION
+
 RUN apt-get update && \
     apt-get install -y curl git unzip && \
     curl -sSL https://apt.puppetlabs.com/puppet6-release-stretch.deb -o puppet6-release.deb && \

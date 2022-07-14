@@ -2,6 +2,8 @@ FROM debian:buster
 
 ENV NAGFLUX_VERSION=0.4.1
 
+LABEL org.opencontainers.image.version=$NAGFLUX_VERSION
+
 RUN apt-get update && \
     apt-get install -y curl && \
     curl -sSL https://github.com/Griesbacher/nagflux/releases/download/v${NAGFLUX_VERSION}/nagflux -o /usr/local/bin/nagflux && \
