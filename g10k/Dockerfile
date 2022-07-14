@@ -1,6 +1,6 @@
 FROM debian:buster
 
-ENV G10K_VERSION=0.6
+ENV G10K_VERSION=0.9.3
 
 LABEL org.opencontainers.image.version=$G10K_VERSION
 
