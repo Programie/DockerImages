@@ -19,6 +19,7 @@ while true; do
         -reset_timestamps 1 \
         -strftime 1 \
         -segment_time 1800 \
+        -segment_atclocktime 1 \
         -segment_format mp4 \
         -segment_format_options "movflags=frag_keyframe+empty_moov+default_base_moof" \
         -c copy \
