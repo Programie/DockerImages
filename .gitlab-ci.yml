@@ -45,6 +45,15 @@ build-elastic-aggregate:
       - build-image.sh
       - elastic-aggregate/**/*
 
+build-ffmpeg:
+  stage: build
+  script: "./build-image.sh ffmpeg"
+  only:
+    changes:
+      - .gitlab-ci.yml
+      - build-image.sh
+      - ffmpeg/**/*
+
 build-fritzbox2elastic:
   stage: build
   script: "./build-image.sh fritzbox2elastic"
