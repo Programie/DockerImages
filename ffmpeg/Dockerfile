@@ -8,8 +8,6 @@ ENV FFMPEG_GID=1000
 RUN apt-get update && \
     apt-get install -y ffmpeg wget && \
     rm -rf /var/lib/apt/lists/* && \
-    groupadd -g ${FFMPEG_GID} ffmpeg && \
-    useradd -g ${FFMPEG_GID} -u ${FFMPEG_UID} ffmpeg && \
     wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-amd64" && \
     chmod +x /usr/local/bin/gosu
 
