@@ -14,6 +14,8 @@ while true; do
     start_time=$(date +%s)
 
     ffmpeg \
+        -hide_banner \
+        -loglevel info \
         -i "${url}" \
         -f segment \
         -reset_timestamps 1 \
