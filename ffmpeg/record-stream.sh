@@ -26,7 +26,7 @@ while true; do
         -segment_format_options "movflags=frag_keyframe+empty_moov+default_base_moof" \
         -c copy \
         -map 0 \
-        "${output_dir}/%Y/%m/%d/%Y-%m-%d_%H-%M-%S.mp4"
+        "${output_dir}/%Y/%m/%d/%Y-%m-%d_%H-%M-%S%z.mp4"
 
     end_time=$(date +%s)
     duration=$((end_time - start_time))
