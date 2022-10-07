@@ -22,11 +22,10 @@ while true; do
         -strftime 1 \
         -segment_time 1800 \
         -segment_atclocktime 1 \
-        -segment_format mp4 \
-        -segment_format_options "movflags=frag_keyframe+empty_moov+default_base_moof" \
+        -segment_format mkv \
         -c copy \
         -map 0 \
-        "${output_dir}/%Y/%m/%d/%Y-%m-%d_%H-%M-%S%z.mp4"
+        "${output_dir}/%Y/%m/%d/%Y-%m-%d_%H-%M-%S%z.mkv"
 
     end_time=$(date +%s)
     duration=$((end_time - start_time))
