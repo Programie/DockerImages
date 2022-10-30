@@ -90,15 +90,6 @@ build-generic-web-php8.1:
       - build-image.sh
       - generic-web/**/*
 
-build-letsencrypt:
-  stage: build
-  script: "./build-image.sh letsencrypt"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - letsencrypt/**/*
-
 build-nagflux:
   stage: build
   script: "./build-image.sh nagflux"
