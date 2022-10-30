@@ -108,15 +108,6 @@ build-nagflux:
       - build-image.sh
       - nagflux/**/*
 
-build-nginx:
-  stage: build
-  script: "./build-image.sh nginx latest multiarch"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - nginx/**/*
-
 build-ocrmypdf-inotify:
   stage: build
   script: "./build-image.sh ocrmypdf-inotify"
