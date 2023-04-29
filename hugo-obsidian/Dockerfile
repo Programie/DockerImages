@@ -1,6 +1,6 @@
 FROM golang
 
-RUN go install github.com/gohugoio/hugo@latest && \
+RUN go install --tags extended github.com/gohugoio/hugo@latest && \
     go install github.com/jackyzha0/hugo-obsidian@latest && \
     mkdir /workspace
 
