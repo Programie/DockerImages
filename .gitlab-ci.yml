@@ -18,59 +18,27 @@ before_script:
   - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
   - apk update && apk add bash
 
-build-bind:
+build:
   stage: build
-  script: "./build-image.sh bind"
+  parallel:
+    matrix:
+      - JOB_NAME:
+          - bind
+          - dovecot
+          - elastic-aggregate
+          - ffmpeg
+          - fritzbox2elastic
+          - g10k
+          - hugo-obsidian
+          - nagflux
+          - ocrmypdf-inotify
+          - samba
+  script: "./build-image.sh ${JOB_NAME}"
   only:
     changes:
       - .gitlab-ci.yml
       - build-image.sh
-      - bind/**/*
-
-build-dovecot:
-  stage: build
-  script: "./build-image.sh dovecot"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - dovecot/**/*
-
-build-elastic-aggregate:
-  stage: build
-  script: "./build-image.sh elastic-aggregate"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - elastic-aggregate/**/*
-
-build-ffmpeg:
-  stage: build
-  script: "./build-image.sh ffmpeg"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - ffmpeg/**/*
-
-build-fritzbox2elastic:
-  stage: build
-  script: "./build-image.sh fritzbox2elastic"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - fritzbox2elastic/**/*
-
-build-g10k:
-  stage: build
-  script: "./build-image.sh g10k"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - g10k/**/*
+      - ${JOB_NAME}/**/*
 
 build-generic-web-php7.4:
   stage: build
@@ -89,39 +57,3 @@ build-generic-web-php8.1:
       - .gitlab-ci.yml
       - build-image.sh
       - generic-web/**/*
-
-build-hugo-obsidian:
-  stage: build
-  script: "./build-image.sh hugo-obsidian"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - hugo-obsidian/**/*
-
-build-nagflux:
-  stage: build
-  script: "./build-image.sh nagflux"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - nagflux/**/*
-
-build-ocrmypdf-inotify:
-  stage: build
-  script: "./build-image.sh ocrmypdf-inotify"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - ocrmypdf-inotify/**/*
-
-build-samba:
-  stage: build
-  script: "./build-image.sh samba"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - samba/**/*
