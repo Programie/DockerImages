@@ -39,7 +39,7 @@ build-generic-web:
       - PHP_VERSION:
           - "7.4"
           - "8.1"
-  script: "./build-image.sh generic-web php${PHP_VERSION} amd64 --build-arg PHP_VERSION=${PHP_VERSION}"
+  script: "./build-image.sh generic-web php${PHP_VERSION} --build-arg PHP_VERSION=${PHP_VERSION}"
   only:
     changes:
       - .gitlab-ci.yml
