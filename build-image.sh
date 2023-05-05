@@ -19,4 +19,4 @@ script_dir=$(dirname $(realpath $0))
 dir="${script_dir}/${image}"
 full_tag="registry.gitlab.com/programie/dockerimages/${image}:${tag}"
 
-docker build build --pull --push --no-cache "$@" --tag "${full_tag}" "${dir}"
+docker build --pull --push --no-cache "$@" --tag "${full_tag}" "${dir}"
