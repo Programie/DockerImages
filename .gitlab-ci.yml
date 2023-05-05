@@ -40,18 +40,14 @@ build:
       - build-image.sh
       - ${JOB_NAME}/**/*
 
-build-generic-web-php7.4:
+build-generic-web:
   stage: build
-  script: "./build-image.sh generic-web php7.4 amd64 --build-arg PHP_VERSION=7.4"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - generic-web/**/*
-
-build-generic-web-php8.1:
-  stage: build
-  script: "./build-image.sh generic-web php8.1 amd64 --build-arg PHP_VERSION=8.1"
+  parallel:
+    matrix:
+      - PHP_VERSION:
+          - "7.4"
+          - "8.1"
+  script: "./build-image.sh generic-web php${PHP_VERSION} amd64 --build-arg PHP_VERSION=${PHP_VERSION}"
   only:
     changes:
       - .gitlab-ci.yml
