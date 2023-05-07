@@ -1,14 +1,15 @@
-FROM debian:buster
+FROM debian:bullseye
 
-ENV G10K_VERSION=0.9.3
+ENV G10K_VERSION=0.9.7
+ENV PUPPET_VERSION=7
 
-LABEL org.opencontainers.image.version=$G10K_VERSION
+LABEL org.opencontainers.image.version=${G10K_VERSION}
 
 RUN apt-get update && \
     apt-get install -y curl git unzip && \
-    curl -sSL https://apt.puppetlabs.com/puppet6-release-stretch.deb -o puppet6-release.deb && \
-    dpkg -i puppet6-release.deb && \
-    rm puppet6-release.deb && \
+    curl -sSL https://apt.puppetlabs.com/puppet${PUPPET_VERSION}-release-bullseye.deb -o puppet-release.deb && \
+    dpkg -i puppet-release.deb && \
+    rm puppet-release.deb && \
     apt-get update && \
     apt-get install -y puppet-agent && \
     curl -sSL https://github.com/xorpaul/g10k/releases/download/v${G10K_VERSION}/g10k-linux-amd64.zip -o g10k-linux-amd64.zip && \
