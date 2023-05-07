@@ -9,7 +9,7 @@ FROM alpine
 COPY --from=builder /go/bin/hugo /go/bin/hugo-obsidian /usr/local/bin/
 
 RUN mkdir /workspace && \
-    apk add git && \
+    apk add git bash && \
     git clone https://github.com/64bitpandas/amethyst.git /workspace && \
     git clone https://github.com/alex-shpak/hugo-book /workspace/themes/hugo-book && \
     rm -rf /workspace/content
