@@ -12,7 +12,8 @@ before_script:
 
 .rules: &rules
   - if: $TRIGGER_JOB == $IMAGE_NAME
-  - changes:
+  - if: $TRIGGER_JOB == null || $TRIGGER_JOB == ""
+    changes:
       - .gitlab-ci.yml
       - build-image.sh
       - images/${IMAGE_NAME}/**/*
