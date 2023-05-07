@@ -14,17 +14,16 @@ build:
   stage: build
   parallel:
     matrix:
-      - IMAGE_NAME:
-          - bind
-          - dovecot
-          - elastic-aggregate
-          - ffmpeg
-          - fritzbox2elastic
-          - g10k
-          - hugo-obsidian
-          - nagflux
-          - ocrmypdf-inotify
-          - samba
+      - IMAGE_NAME: bind
+      - IMAGE_NAME: dovecot
+      - IMAGE_NAME: elastic-aggregate
+      - IMAGE_NAME: ffmpeg
+      - IMAGE_NAME: fritzbox2elastic
+      - IMAGE_NAME: g10k
+      - IMAGE_NAME: hugo-obsidian
+      - IMAGE_NAME: nagflux
+      - IMAGE_NAME: ocrmypdf-inotify
+      - IMAGE_NAME: samba
   script: "./build-image.sh ${IMAGE_NAME}"
   rules:
     - changes:
