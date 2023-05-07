@@ -3,6 +3,7 @@ FROM debian:bullseye
 ENV G10K_VERSION=0.9.7
 ENV PUPPET_VERSION=7
 
+
 LABEL org.opencontainers.image.version=${G10K_VERSION}
 
 RUN apt-get update && \
