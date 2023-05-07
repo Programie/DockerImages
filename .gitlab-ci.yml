@@ -10,6 +10,13 @@ before_script:
   - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
   - apk update && apk add bash
 
+.rules: &rules
+  - if: $TRIGGER_JOB == $IMAGE_NAME
+  - changes:
+      - .gitlab-ci.yml
+      - build-image.sh
+      - images/${IMAGE_NAME}/**/*
+
 build:
   stage: build
   parallel:
@@ -25,22 +32,16 @@ build:
       - IMAGE_NAME: ocrmypdf-inotify
       - IMAGE_NAME: samba
   script: "./build-image.sh ${IMAGE_NAME}"
-  rules:
-    - changes:
-        - .gitlab-ci.yml
-        - build-image.sh
-        - images/${IMAGE_NAME}/**/*
+  rules: *rules
 
 build-generic-web:
   stage: build
+  variables:
+    IMAGE_NAME: generic-web
   parallel:
     matrix:
       - PHP_VERSION:
           - "7.4"
           - "8.1"
-  script: "./build-image.sh generic-web php${PHP_VERSION} --build-arg PHP_VERSION=${PHP_VERSION}"
-  rules:
-    - changes:
-        - .gitlab-ci.yml
-        - build-image.sh
-        - images/generic-web/**/*
+  script: "./build-image.sh ${IMAGE_NAME} php${PHP_VERSION} --build-arg PHP_VERSION=${PHP_VERSION}"
+  rules: *rules
