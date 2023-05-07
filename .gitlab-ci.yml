@@ -26,11 +26,11 @@ build:
           - ocrmypdf-inotify
           - samba
   script: "./build-image.sh ${IMAGE_NAME}"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - images/${IMAGE_NAME}/**/*
+  rules:
+    - changes:
+        - .gitlab-ci.yml
+        - build-image.sh
+        - images/${IMAGE_NAME}/**/*
 
 build-generic-web:
   stage: build
@@ -40,8 +40,8 @@ build-generic-web:
           - "7.4"
           - "8.1"
   script: "./build-image.sh generic-web php${PHP_VERSION} --build-arg PHP_VERSION=${PHP_VERSION}"
-  only:
-    changes:
-      - .gitlab-ci.yml
-      - build-image.sh
-      - images/generic-web/**/*
+  rules:
+    - changes:
+        - .gitlab-ci.yml
+        - build-image.sh
+        - images/generic-web/**/*
