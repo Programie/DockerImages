@@ -19,8 +19,8 @@ RUN apt-get update && \
     apt-get purge -y --auto-remove curl unzip && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ./entrypoint.sh /entrypoint.sh
-COPY ./g10k.yaml /etc/g10k.yaml
+COPY entrypoint.sh /entrypoint.sh
+COPY g10k.yaml /etc/g10k.yaml
 
 VOLUME ["/source", "/etc/puppetlabs/code"]
 

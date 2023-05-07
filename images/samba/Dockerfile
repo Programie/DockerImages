@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y samba && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ./entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 EXPOSE 139 445
 

@@ -4,7 +4,7 @@ set -e
 
 script_dir=$(dirname $(realpath $0))
 
-for dir in ${script_dir}/*; do
+for dir in ${script_dir}/images/*; do
     if [[ ! -d ${dir} ]]; then
         continue
     fi

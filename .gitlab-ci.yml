@@ -14,7 +14,7 @@ build:
   stage: build
   parallel:
     matrix:
-      - JOB_NAME:
+      - IMAGE_NAME:
           - bind
           - dovecot
           - elastic-aggregate
@@ -25,12 +25,12 @@ build:
           - nagflux
           - ocrmypdf-inotify
           - samba
-  script: "./build-image.sh ${JOB_NAME}"
+  script: "./build-image.sh ${IMAGE_NAME}"
   only:
     changes:
       - .gitlab-ci.yml
       - build-image.sh
-      - ${JOB_NAME}/**/*
+      - images/${IMAGE_NAME}/**/*
 
 build-generic-web:
   stage: build
@@ -44,4 +44,4 @@ build-generic-web:
     changes:
       - .gitlab-ci.yml
       - build-image.sh
-      - generic-web/**/*
+      - images/generic-web/**/*
