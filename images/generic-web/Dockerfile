@@ -9,7 +9,7 @@ ENV HTTPD_GID=33
 
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apt-get update && apt-get install -y libicu-dev && \
+RUN apt-get update && apt-get install -y git libicu-dev && \
     rm -rf /var/lib/apt/lists/* && \
     echo "ServerTokens Prod" > /etc/apache2/conf-enabled/z-server-tokens.conf && \
     a2enmod rewrite && \
