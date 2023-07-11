@@ -26,6 +26,7 @@ while true; do
         -segment_format mkv \
         -c copy \
         -map 0 \
+        "${FFMPEG_OPTIONS:---}" \
         "${output_dir}/%Y/%m/%d/${filename_format}.mkv"
 
     end_time=$(date +%s)
