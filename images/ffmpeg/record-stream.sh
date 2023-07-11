@@ -2,9 +2,10 @@
 
 url="$1"
 output_dir="$2"
+filename_format="${3:-%Y-%m-%d_%H-%M-%S%z}"
 
 if [[ -z ${url} ]] || [[ -z ${output_dir} ]]; then
-    echo "Usage: $0 <url> <output dir>"
+    echo "Usage: $0 <url> <output dir> [<filename format>]"
     exit 1
 fi
 
@@ -25,7 +26,7 @@ while true; do
         -segment_format mkv \
         -c copy \
         -map 0 \
-        "${output_dir}/%Y/%m/%d/%Y-%m-%d_%H-%M-%S%z.mkv"
+        "${output_dir}/%Y/%m/%d/${filename_format}.mkv"
 
     end_time=$(date +%s)
     duration=$((end_time - start_time))
