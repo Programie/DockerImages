@@ -27,5 +27,5 @@ jobs:
         with:
           context: images/generic-web
           push: true
-          build-args: PHP_VERSION=${{ php_version }}
-          tags: registry.gitlab.com/programie/dockerimages/generic-web:php${{ php_version }}
+          build-args: PHP_VERSION=${{ matrix.php_version }}
+          tags: registry.gitlab.com/programie/dockerimages/generic-web:php${{ matrix.php_version }}
