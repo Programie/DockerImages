@@ -33,9 +33,15 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: registry.gitlab.com/programie/dockerimages/${{ matrix.image }}
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: images/${{ matrix.image }}
           push: true
-          tags: registry.gitlab.com/programie/dockerimages/${{ matrix.image }}:latest
+          tags: registry.gitlab.com/programie/dockerimages/${{ matrix.image }}
+          labels: ${{ steps.metadata.outputs.labels }}
