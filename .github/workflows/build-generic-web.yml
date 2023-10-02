@@ -25,6 +25,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: registry.gitlab.com/programie/dockerimages/generic-web:php${{ matrix.php_version }}
+
       - uses: docker/build-push-action@v5
         with:
           context: images/generic-web
