@@ -79,3 +79,4 @@ jobs:
           push: true
           build-args: PHP_VERSION=${{ matrix.php_version }}
           tags: ghcr.io/programie/dockerimages/generic-web:php${{ matrix.php_version }}
+          labels: ${{ steps.metadata.outputs.labels }}
