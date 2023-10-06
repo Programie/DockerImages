@@ -47,7 +47,10 @@ jobs:
           context: images/${{ matrix.image }}
           push: true
           tags: ghcr.io/programie/dockerimages/${{ matrix.image }}
-          labels: ${{ steps.metadata.outputs.labels }}
+          labels: |
+            org.opencontainers.image.source=${{ fromJSON(steps.metadata.outputs.json).labels['org.opencontainers.image.source'] }}
+            org.opencontainers.image.revision=${{ fromJSON(steps.metadata.outputs.json).labels['org.opencontainers.image.revision'] }}
+            org.opencontainers.image.created=${{ fromJSON(steps.metadata.outputs.json).labels['org.opencontainers.image.created'] }}
 
   build-generic-web:
     runs-on: ubuntu-latest
@@ -79,4 +82,7 @@ jobs:
           push: true
           build-args: PHP_VERSION=${{ matrix.php_version }}
           tags: ghcr.io/programie/dockerimages/generic-web:php${{ matrix.php_version }}
-          labels: ${{ steps.metadata.outputs.labels }}
+          labels: |
+            org.opencontainers.image.source=${{ fromJSON(steps.metadata.outputs.json).labels['org.opencontainers.image.source'] }}
+            org.opencontainers.image.revision=${{ fromJSON(steps.metadata.outputs.json).labels['org.opencontainers.image.revision'] }}
+            org.opencontainers.image.created=${{ fromJSON(steps.metadata.outputs.json).labels['org.opencontainers.image.created'] }}
