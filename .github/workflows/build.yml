@@ -66,6 +66,8 @@ jobs:
             org.opencontainers.image.created=${{ fromJSON(steps.metadata.outputs.json).labels['org.opencontainers.image.created'] }}
 
   build-generic-web:
+    needs: build
+
     runs-on: ubuntu-latest
 
     strategy:
