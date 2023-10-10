@@ -22,4 +22,8 @@ To share the same configuration between Apache and CLI, there is also a shared `
 
 ## Document root
 
-The default document root is `/var/www/html`.
+The default document root is `/var/www/html` but can be changed using the environment variable `WEB_ROOT`.
+
+## Timezone
+
+The default timezone is `UTC` but can be changed using the environment variable `TZ`.
