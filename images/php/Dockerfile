@@ -3,6 +3,7 @@ FROM debian:bookworm
 ENV APACHE_CONFDIR=/etc/apache2
 ENV APACHE_ENVVARS=/etc/apache2/envvars
 ENV WEB_ROOT=/var/www/html
+ENV TZ=UTC
 
 COPY apt.gpg /usr/share/keyrings/deb.sury.org-php.gpg
 
