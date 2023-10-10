@@ -2,6 +2,7 @@ FROM debian:bookworm
 
 ENV APACHE_CONFDIR=/etc/apache2
 ENV APACHE_ENVVARS=/etc/apache2/envvars
+ENV WEB_ROOT=/var/www/html
 
 COPY apt.gpg /usr/share/keyrings/deb.sury.org-php.gpg
 
@@ -30,10 +31,11 @@ RUN set -eux; \
     chown -R www-data:www-data /var/www/html
 
 COPY config/apache2.conf ${APACHE_CONFDIR}/conf-enabled/10-docker.conf
+COPY config/apache2-vhost.conf ${APACHE_CONFDIR}/sites-enabled/000-default.conf
 COPY config/php.ini /etc/php/docker.ini
 COPY bin/ /usr/local/bin/
 
-WORKDIR /var/www/html
+WORKDIR ${WEB_ROOT}
 
 EXPOSE 80
 
