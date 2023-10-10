@@ -1,6 +1,6 @@
 ARG PHP_VERSION
 
-FROM php:${PHP_VERSION}-apache
+FROM ghcr.io/programie/dockerimages/php
 
 LABEL org.opencontainers.image.version=$PHP_VERSION
 
@@ -9,13 +9,10 @@ ENV HTTPD_GID=33
 
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apt-get update && apt-get install -y git libicu-dev && \
+RUN apt-get update && apt-get install -y git && \
     rm -rf /var/lib/apt/lists/* && \
-    echo "ServerTokens Prod" > /etc/apache2/conf-enabled/z-server-tokens.conf && \
+    install-php ${PHP_VERSION} intl pdo-mysql && \
     a2enmod rewrite && \
-    docker-php-ext-configure intl && \
-    docker-php-ext-install intl pdo_mysql sockets && \
-    mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     curl -o /usr/local/bin/composer https://getcomposer.org/download/latest-stable/composer.phar && \
     chmod +x /usr/local/bin/composer
 
