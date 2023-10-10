@@ -1,0 +1,47 @@
+#! /bin/bash
+
+set -eo pipefail
+
+php_version="$1"
+
+if [[ -z ${php_version} ]]; then
+    echo "Usage: $0 <php version> [<php extension> <...>]"
+    exit 1
+fi
+
+shift
+
+php_packages=($@)
+
+# Default PHP packages
+php_packages+=("cli")
+
+# Prefix each PHP package with "php${php_version}-"
+php_packages=("${php_packages[@]/#/php${php_version}-}")
+
+apt-get update
+
+apt-get install -y --no-install-recommends php${php_version}-common libapache2-mod-php${php_version}
+
+if [[ ${php_packages} ]]; then
+    apt-get install -y --no-install-recommends ${php_packages[@]}
+fi
+
+php_conf_dir="/etc/php/${php_version}"
+
+# Create symlink pointing to the config directory of the currently installed PHP version
+ln -s ${php_conf_dir} /etc/php/current
+
+# Symlink Docker specific php.ini
+ln -s /etc/php/docker.ini ${php_conf_dir}/apache2/conf.d/40-docker.ini
+ln -s /etc/php/docker.ini ${php_conf_dir}/cli/conf.d/40-docker.ini
+
+# Initialize and symlink shared php.ini
+touch /etc/php/current/global.ini
+ln -s ${php_conf_dir}/global.ini ${php_conf_dir}/apache2/conf.d/50-global.ini
+ln -s ${php_conf_dir}/global.ini ${php_conf_dir}/cli/conf.d/50-global.ini
+
+rm -rf /var/lib/apt/lists/*
+
+# Smoke test
+php --version

@@ -34,6 +34,7 @@ jobs:
           - hugo-obsidian
           - nagflux
           - ocrmypdf-inotify
+          - php
           - samba
 
     steps:

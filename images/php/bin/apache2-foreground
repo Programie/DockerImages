@@ -1,0 +1,7 @@
+#! /bin/bash
+
+set -e
+
+source ${APACHE_ENVVARS}
+
+exec /usr/sbin/apache2 -DFOREGROUND
