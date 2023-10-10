@@ -62,7 +62,7 @@ jobs:
           images: ghcr.io/programie/dockerimages/${{ matrix.image }}
 
       - uses: docker/build-push-action@v5
-        if: ${{ steps.changes.outputs.files || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+        if: ${{ steps.changes.outputs.files == 'true' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
         with:
           context: images/${{ matrix.image }}
           push: true
