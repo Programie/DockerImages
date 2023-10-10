@@ -1,6 +1,6 @@
-ARG PHP_VERSION
-
 FROM ghcr.io/programie/dockerimages/php
+
+ARG PHP_VERSION
 
 LABEL org.opencontainers.image.version=$PHP_VERSION
 
@@ -9,7 +9,7 @@ ENV HTTPD_GID=33
 
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apt-get update && apt-get install -y git && \
+RUN apt-get update && apt-get install -y curl git && \
     rm -rf /var/lib/apt/lists/* && \
     install-php ${PHP_VERSION} intl pdo-mysql && \
     a2enmod rewrite && \
