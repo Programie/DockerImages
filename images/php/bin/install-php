@@ -30,16 +30,16 @@ fi
 php_conf_dir="/etc/php/${php_version}"
 
 # Create symlink pointing to the config directory of the currently installed PHP version
-ln -s ${php_conf_dir} /etc/php/current
+ln -sfT ${php_conf_dir} /etc/php/current
 
 # Symlink Docker specific php.ini
-ln -s /etc/php/docker.ini ${php_conf_dir}/apache2/conf.d/40-docker.ini
-ln -s /etc/php/docker.ini ${php_conf_dir}/cli/conf.d/40-docker.ini
+ln -sfT /etc/php/docker.ini ${php_conf_dir}/apache2/conf.d/40-docker.ini
+ln -sfT /etc/php/docker.ini ${php_conf_dir}/cli/conf.d/40-docker.ini
 
 # Initialize and symlink shared php.ini
 touch /etc/php/current/global.ini
-ln -s ${php_conf_dir}/global.ini ${php_conf_dir}/apache2/conf.d/50-global.ini
-ln -s ${php_conf_dir}/global.ini ${php_conf_dir}/cli/conf.d/50-global.ini
+ln -sfT ${php_conf_dir}/global.ini ${php_conf_dir}/apache2/conf.d/50-global.ini
+ln -sfT ${php_conf_dir}/global.ini ${php_conf_dir}/cli/conf.d/50-global.ini
 
 rm -rf /var/lib/apt/lists/*
 
