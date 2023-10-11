@@ -40,4 +40,4 @@ WORKDIR ${WEB_ROOT}
 
 EXPOSE 80
 
-CMD apache2-foreground
+CMD ["apache2-foreground"]
