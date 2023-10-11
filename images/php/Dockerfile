@@ -15,12 +15,12 @@ RUN set -eux; \
     . ${APACHE_ENVVARS}; \
     for dir in \
         "$APACHE_LOCK_DIR" \
-    	"$APACHE_RUN_DIR" \
-    	"$APACHE_LOG_DIR" \
+        "$APACHE_RUN_DIR" \
+        "$APACHE_LOG_DIR" \
     ; do \
         rm -rvf "$dir"; \
-    	mkdir -p "$dir"; \
-    	chown "$APACHE_RUN_USER:$APACHE_RUN_GROUP" "$dir"; \
+        mkdir -p "$dir"; \
+        chown "$APACHE_RUN_USER:$APACHE_RUN_GROUP" "$dir"; \
     done; \
     rm -rf ${APACHE_CONFDIR}/conf-enabled; \
     mkdir ${APACHE_CONFDIR}/conf-enabled; \
