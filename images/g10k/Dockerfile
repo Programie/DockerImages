@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
 ENV G10K_VERSION=0.9.8
-ENV PUPPET_VERSION=7
+ENV PUPPET_VERSION=8
 
 LABEL org.opencontainers.image.version=${G10K_VERSION}
 
