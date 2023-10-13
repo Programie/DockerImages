@@ -18,35 +18,38 @@ env:
   USE_CACHE: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.use_cache) }}
 
 jobs:
-  build:
+  get-images:
     runs-on: ubuntu-latest
+
+    outputs:
+      images: ${{ steps.get-images.outputs.images }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - id: get-images
+        run: |
+          images=$(scripts/get-images.sh | jq --compact-output --raw-input --slurp 'split("\n") | del(.[] | select(. == ""))')
+          echo "images=${images}" >> ${GITHUB_OUTPUT}
+        env:
+          PREVIOUS_PUSH: ${{ github.event.before }}
+          EXCLUDE_IMAGES: generic-web
+
+  build:
+    needs: get-images
+    runs-on: ubuntu-latest
+    if: ${{ needs.get-images.outputs.images != '[]' && needs.get-images.outputs.images != '' }}
 
     strategy:
       fail-fast: false
       matrix:
-        image:
-          - bind
-          - dovecot
-          - elastic-aggregate
-          - ffmpeg
-          - fritzbox2elastic
-          - g10k
-          - hugo-obsidian
-          - nagflux
-          - ocrmypdf-inotify
-          - php
-          - samba
+        image: ${{ fromJSON(needs.get-images.outputs.images) }}
 
     steps:
       - uses: actions/checkout@v2
-
-      - uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            files:
-              - "images/${{ matrix.image }}/**"
-              - .github/workflows/build.yml
 
       - uses: docker/setup-buildx-action@v3
 
@@ -62,7 +65,6 @@ jobs:
           images: ghcr.io/programie/dockerimages/${{ matrix.image }}
 
       - uses: docker/build-push-action@v5
-        if: ${{ steps.changes.outputs.files == 'true' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
         with:
           context: images/${{ matrix.image }}
           push: true
