@@ -86,7 +86,6 @@ jobs:
 
   build-generic-web:
     name: Build generic-web images
-    needs: build
     runs-on: ubuntu-latest
 
     strategy:
