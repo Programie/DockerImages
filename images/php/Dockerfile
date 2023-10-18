@@ -1,1 +1,1 @@
-FROM ghcr.io/programie/php-docker:main
+FROM ghcr.io/programie/php-docker
