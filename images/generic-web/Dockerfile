@@ -1,4 +1,4 @@
-FROM ghcr.io/programie/dockerimages/php
+FROM ghcr.io/programie/php-docker
 
 ARG PHP_VERSION
 
