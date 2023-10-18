@@ -1,1 +1,1 @@
-FROM ghcr.io/programie/php
+FROM ghcr.io/programie/php:main
