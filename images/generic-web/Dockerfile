@@ -10,7 +10,7 @@ ENV HTTPD_GID=33
 COPY entrypoint.sh /entrypoint.sh
 
 RUN apt-get update && apt-get install -y curl git && \
-    install-php ${PHP_VERSION} curl intl pdo-mysql xml && \
+    install-php ${PHP_VERSION} curl intl mbstring pdo-mysql xml && \
     a2enmod rewrite && \
     curl -o /usr/local/bin/composer https://getcomposer.org/download/latest-stable/composer.phar && \
     chmod +x /usr/local/bin/composer
