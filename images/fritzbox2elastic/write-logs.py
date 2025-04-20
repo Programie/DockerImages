@@ -6,7 +6,7 @@ import pytz
 import re
 
 from datetime import datetime
-from elasticsearch import Elasticsearch
+from elasticsearch8 import Elasticsearch
 from fritzconnection import FritzConnection
 
 timezone = pytz.timezone(os.getenv("TZ", "UTC"))

@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
-from elasticsearch import helpers as es_helpers
-from elasticsearch import Elasticsearch
+from elasticsearch8 import helpers as es_helpers
+from elasticsearch8 import Elasticsearch
 import argparse
 import datetime
 import hashlib
