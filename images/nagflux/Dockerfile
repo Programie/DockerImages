@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bookworm
 
 ENV NAGFLUX_VERSION=0.4.1
 

@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 ENV G10K_VERSION=0.9.9
 ENV PUPPET_VERSION=8
